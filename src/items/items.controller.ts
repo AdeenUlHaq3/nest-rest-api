@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
 
 import { ItemsService } from './items.service';
@@ -9,6 +9,7 @@ export class ItemsController {
     constructor(private readonly itemsService: ItemsService) {}
 
     @Get()
+    // @UseInterceptors(ClassSerializerInterceptor)
     findAll(): Promise<Item[]> {
         return this.itemsService.findAll();
     }
